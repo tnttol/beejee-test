@@ -21,7 +21,12 @@ new Vue({
                     document.location.href = '/';
                 }
             }).fail((jqXHR, textStatus) => {
-                this.errors = jqXHR.responseJSON.errors || { };
+                const json = jqXHR.responseJSON;
+                this.errors = json.errors || { };
+
+                if (json.redirect) {
+                    document.location.href = json.redirect;
+                }
             }).always(() => {
                 this.loading = false;
             });
