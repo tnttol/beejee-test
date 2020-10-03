@@ -1,0 +1,38 @@
+.content {
+  max-width: 900px;
+  margin: auto;
+}
+.edit-form {
+  width: 800px;
+  margin: 0 auto;
+}
+.edit-form form {
+  background: #f7f7f7;
+  padding: 20px;
+}
+.login-form {
+  width: 340px;
+  margin: 50px auto;
+}
+.login-form form {
+  margin-bottom: 15px;
+  background: #f7f7f7;
+  padding: 30px;
+}
+.login-form h2 {
+  margin: 0 0 15px;
+}
+.form-control, .btn {
+  border-radius: 2px;
+}
+.btn {
+  font-size: 15px;
+  font-weight: bold;
+}
+.list-email {
+    display: inline-block;
+    max-width: 250px;
+    white-space: nowrap;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+}

@@ -1,0 +1,11 @@
+{
+  "name": "tnttol/beejee-test",
+  "require": {
+    "ext-pdo": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "App\\": "app/"
+    }
+  }
+}
