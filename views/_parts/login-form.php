@@ -30,6 +30,7 @@ $this->script = '/assets/js/login.js';
     </div>
     <div class="form-group">
       <button id="login-btn" type="submit" class="btn btn-primary btn-block" :class="{ disabled: loading }">Log in</button>
+      <a class="btn btn-secondary btn-block" href="/">Go To Home</a>
     </div>
   </form>
 </div>
