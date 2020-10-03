@@ -18,12 +18,28 @@ abstract class Controller
     public function __construct()
     {
         $this->initView();
+        $this->checkNotification();
     }
 
+    /**
+     * Init View
+     */
     public function initView(): void
     {
         $this->view = new View;
         $this->view->isAuth = $this->isAuth();
+    }
+
+    /**
+     * Check Notification
+     */
+    public function checkNotification()
+    {
+        if (Notifier::hasNotification()) {
+            $this->view->notificationType = Notifier::getNotificationType();
+            $this->view->notification = Notifier::getNotification();
+            Notifier::clearNotification();
+        }
     }
 
     /**

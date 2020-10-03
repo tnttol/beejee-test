@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Component\Controller;
+use App\Component\Notifier;
 use App\Model\Enum\TaskStatus;
 use App\Model\Task;
 use Exception;
@@ -181,7 +182,10 @@ class TaskController extends Controller
 
         if (empty($this->errors)) {
             $values['status'] = TaskStatus::Active;
-            Task::add($values);
+
+            if (Task::add($values)) {
+                Notifier::addNotification('success', 'The task has been successfully added.');
+            }
         }
 
         $this->sendResponse();
@@ -192,6 +196,10 @@ class TaskController extends Controller
      */
     public function updateAction(): void
     {
+        if (!$this->isAjax()) {
+            $this->redirect('/');
+        }
+
         if (!$this->isAuth()) {
             $this->redirect('/login');
         }
@@ -207,7 +215,9 @@ class TaskController extends Controller
                 $id = empty($_POST['id']) ? null : (int)$_POST['id'];
             }
 
-            Task::update($id, $values);
+            if (Task::update($id, $values)) {
+                Notifier::addNotification('success', 'The task has been successfully updated.');
+            }
         }
 
         $this->sendResponse();
